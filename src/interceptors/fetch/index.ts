@@ -55,7 +55,7 @@ export class FetchInterceptor extends Interceptor<HttpRequestEventMap> {
           )
           return requestUrl
         } catch (error) {
-          return new URL(url)
+          return new URL(url, undefined)
         }
       }
 
