@@ -55,11 +55,15 @@ export class FetchInterceptor extends Interceptor<HttpRequestEventMap> {
           )
           return requestUrl
         } catch (error) {
-          return new URL(url, undefined)
+          return null
         }
       }
 
       const requestUrl = getRequestUrl()
+
+      if (!requestUrl) {
+        return new Response()
+      }
 
       const isomorphicRequest = new IsomorphicRequest(requestUrl, {
         body,
